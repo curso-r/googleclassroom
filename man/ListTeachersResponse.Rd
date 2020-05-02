@@ -18,7 +18,7 @@ ListTeachersResponse object
 \description{
 Auto-generated code by googleAuthR::gar_create_api_objects
 at 2020-05-01 22:10:36
-filename: ..//googleclassroomv1.auto/R/classroom_objects.R
+filename: ..//googleclassroom/R/classroom_objects.R
 api_json: api_json
 }
 \details{

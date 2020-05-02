@@ -3,7 +3,7 @@
 #'
 #' Auto-generated code by googleAuthR::gar_create_api_skeleton
 #'  at 2020-05-01 22:10:35
-#' filename: ..//googleclassroomv1.auto/R/classroom_functions.R
+#' filename: ..//googleclassroom/R/classroom_functions.R
 #' api_json: api_json
 #'
 #' @details
