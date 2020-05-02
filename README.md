@@ -1,4 +1,4 @@
-# googleclassroomv1.auto
+# googleclassroom
 ![](http://www.google.com/images/icons/product/search-32.gif)
 Google Classroom API R library
 
