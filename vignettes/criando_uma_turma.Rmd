@@ -1,0 +1,76 @@
+---
+title: "Criando uma turma"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{criando_uma_turma}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, warning=FALSE, message=FALSE}
+library(googleclassroom)
+library(dplyr)
+library(googleAuthR)
+```
+
+
+
+## Client Auth 
+
+Para pegar uma `GOOGLE_AUTH_R_CLIENT_ID` e `GOOGLE_AUTH_R_CLIENT_SECRET` precisa ir ao Google Cloud Platform e gerar uma *account service*. *Account services* são usuários como se fossem pessoas normais, mas servem para autenticar em API's.
+
+```{r}
+options(
+  googleAuthR.client_id = Sys.getenv("GOOGLE_AUTH_R_CLIENT_ID"),
+  googleAuthR.client_secret = Sys.getenv("GOOGLE_AUTH_R_CLIENT_SECRET")
+)
+```
+
+
+
+## Criar o curso
+
+### Autenticacao no scope
+```{r}
+options(googleAuthR.scopes.selected = c("https://www.googleapis.com/auth/classroom.courses"))
+gar_auth(email = "adamiani@curso-r.com")
+```
+
+### Config do curso
+
+```{r}
+new_course <- gc_course(
+  name = "Teste R client API 444",
+  ownerId = "me",
+  courseState = "ACTIVE",
+  section = "Section A",
+  descriptionHeading = "Description Heading A",
+  description = "Description A",
+  room = "Room A"
+)
+```
+
+### cria o curso
+
+```{r, warning=FALSE}
+infos_do_curso_criado <- gc_courses_create(new_course)
+glimpse(infos_do_curso_criado)
+```
+
+### Consulta dos dados do curso
+```{r}
+gc_courses_list()[[1]] %>% select(name, section)
+```
+
+### deleta o curso
+
+```{r}
+gc_courses_delete(infos_do_curso_criado$id)
+```

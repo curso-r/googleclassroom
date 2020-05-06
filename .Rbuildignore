@@ -1,2 +1,5 @@
 ^googleclassroomv1\.auto\.Rproj$
 ^\.Rproj\.user$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
